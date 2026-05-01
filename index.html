@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopEasy – Online Shopping</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">🛍️ ShopEasy</div>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showSection('home')">Home</a></li>
+      <li><a href="#" onclick="showSection('products')">Products</a></li>
+    </ul>
+    <div class="nav-right">
+      <input type="text" id="nav-search" placeholder="Search products..." oninput="liveSearch(this.value)"/>
+      <button class="cart-btn" onclick="showSection('cart')">
+        🛒 Cart <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Shop Smarter, <br/><span>Live Better</span></h1>
+      <p>Discover thousands of products at unbeatable prices. Fast delivery, easy returns.</p>
+      <button class="btn-primary" onclick="showSection('products')">Shop Now →</button>
+    </div>
+    <div class="hero-img">🛒</div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="products">
+    <div class="container">
+      <h2>Shop by Category</h2>
+      <div class="cat-tabs">
+        <button class="cat-tab active" onclick="filterProducts('all',this)">All</button>
+        <button class="cat-tab" onclick="filterProducts('electronics',this)">Electronics</button>
+        <button class="cat-tab" onclick="filterProducts('fashion',this)">Fashion</button>
+        <button class="cat-tab" onclick="filterProducts('home',this)">Home & Kitchen</button>
+        <button class="cat-tab" onclick="filterProducts('books',this)">Books</button>
+      </div>
+
+      <!-- PRODUCTS GRID -->
+      <div class="products-grid" id="products-grid">
+
+        <div class="product-card" data-category="electronics">
+          <div class="product-img">📱</div>
+          <div class="product-info">
+            <span class="product-cat">Electronics</span>
+            <h3>Wireless Earbuds Pro</h3>
+            <div class="product-rating">⭐⭐⭐⭐⭐ (320)</div>
+            <div class="product-price">
+              <span class="price">₹1,299</span>
+              <span class="original-price">₹2,499</span>
+              <span class="discount">48% off</span>
+            </div>
+            <button class="btn-cart" onclick="addToCart(this,'Wireless Earbuds Pro',1299)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="fashion">
+          <div class="product-img">👕</div>
+          <div class="product-info">
+            <span class="product-cat">Fashion</span>
+            <h3>Classic Cotton T-Shirt</h3>
+            <div class="product-rating">⭐⭐⭐⭐ (185)</div>
+            <div class="product-price">
+              <span class="price">₹399</span>
+              <span class="original-price">₹799</span>
+              <span class="discount">50% off</span>
+            </div>
+            <button class="btn-cart" onclick="addToCart(this,'Classic Cotton T-Shirt',399)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="electronics">
+          <div class="product-img">💻</div>
+          <div class="product-info">
+            <span class="product-cat">Electronics</span>
+            <h3>Laptop Stand Adjustable</h3>
+            <div class="product-rating">⭐⭐⭐⭐⭐ (97)</div>
+            <div class="product-price">
+              <span class="price">₹849</span>
+              <span class="original-price">₹1,499</span>
+              <span class="discount">43% off</span>
+            </div>
+            <button class="btn-cart" onclick="addToCart(this,'Laptop Stand Adjustable',849)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="home">
+          <div class="product-img">☕</div>
+          <div class="product-info">
+            <span class="product-cat">Home & Kitchen</span>
+            <h3>Stainless Steel Mug 500ml</h3>
+            <div class="product-rating">⭐⭐⭐⭐ (241)</div>
+            <div class="product-price">
+              <span class="price">₹349</span>
+              <span class="original-price">₹699</span>
+              <span class="discount">50% off</span>
+            </div>
+            <button class="btn-cart" onclick="addToCart(this,'Stainless Steel Mug',349)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="books">
+          <div class="product-img">📚</div>
+          <div class="product-info">
+            <span class="product-cat">Books</span>
+            <h3>Clean Code by Robert Martin</h3>
+            <div class="product-rating">⭐⭐⭐⭐⭐ (512)</div>
+            <div class="product-price">
+              <span class="price">₹499</span>
+              <span class="original-price">₹899</span>
+              <span class="discount">44% off</span>
+            </div>
+            <button class="btn-cart" onclick="addToCart(this,'Clean Code',499)">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="fashion">
+          <div class="product-img">👟</div>
+          <div class="product-info">
+            <span class="product-cat">Fashion</span>
+            <h3>Running Shoes Light</h3>
+            <div class="product-rating">⭐⭐⭐⭐ (143)</div>
+            <div class="product-price">
+              <span class="price">₹1,799</span>
+              <span class="original-price">₹3,499</span>
+              <span class="discount">49% off</span>
+            </div>
+            <button class="btn-cart" onclick="addToCart(this,'Running Shoes',1799)">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+      <p id="no-products" style="display:none;text-align:center;color:#888;padding:2rem;">No products found.</p>
+    </div>
+  </section>
+
+  <!-- CART PAGE -->
+  <section class="cart-page" id="cart" style="display:none">
+    <div class="container">
+      <h2>🛒 Your Cart</h2>
+      <div id="cart-items"></div>
+      <div class="cart-summary" id="cart-summary" style="display:none">
+        <div class="summary-row"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+        <div class="summary-row"><span>Delivery</span><span style="color:green">FREE</span></div>
+        <div class="summary-row total"><span>Total</span><span id="total">₹0</span></div>
+        <button class="btn-primary" onclick="checkout()">Proceed to Checkout</button>
+      </div>
+      <p id="empty-cart" style="text-align:center;color:#888;padding:3rem 0;">Your cart is empty. <a href="#" onclick="showSection('products')" style="color:#2563eb">Continue shopping →</a></p>
+    </div>
+  </section>
+
+  <!-- ORDER SUCCESS -->
+  <div class="order-success" id="order-success" style="display:none">
+    <div class="success-box">
+      <div style="font-size:3rem">✅</div>
+      <h2>Order Placed!</h2>
+      <p>Your order has been successfully placed. You'll receive a confirmation soon.</p>
+      <button class="btn-primary" onclick="closeSuccess()">Continue Shopping</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 ShopEasy · Built by Devipriya Kovalan</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
